@@ -1,0 +1,111 @@
+﻿
+[1m[46m RUN [49m[22m [36mv4.0.18 [39m[90mC:/Users/Bartlomiej/teacher-panel[39m
+
+npx : [31mÔÄ»ÔÄ»ÔÄ»ÔÄ
+»ÔÄ»ÔÄ»[39m[1m[41m 
+Unhandled Errors [49m
+[22m[31mÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»[39m
+At line:1 char:1
++ npx vitest run 2>&1 
+| Out-File -FilePath t
+est-output.txt -Encodi
+ng UT ...
++ ~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo    
+          : NotSpeci  
+  fied: ([31mÔÄ»ÔÄ   
+ »ÔÄ»Ô...»ÔÄ»ÔÄ»ÔÄ    
+»[39m:String) []    ,
+ RemoteException
+    + FullyQualifiedE 
+   rrorId : NativeCo  
+  mmandError
+ 
+[31m[1m
+Vitest caught 1 unhand
+led error during the t
+est run.
+This might cause false
+ positive tests. Resol
+ve unhandled errors to
+ make sure your tests 
+are not affected.[22m
+[39m
+
+[31mÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ
+»[39m[1m[41m Unhand
+led Error [49m[22m[
+31mÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»Ô
+Ä»[39m
+[31m[1mError[22m: [
+vitest-pool]: Failed t
+o start forks worker f
+or test files C:/Users
+/Bartlomiej/teacher-pa
+nel/src/models/Models.
+test.js.[39m
+[90m [2mÔŁ»[22m nod
+e_modules/vitest/dist/
+chunks/cli-api.B7PN_QU
+v.js:[2m8046:94[22m
+[39m
+[90m [2mÔŁ»[22m pro
+cessTicksAndRejections
+ node:internal/process
+/task_queues:[2m95:5
+[22m[39m
+[90m [2mÔŁ»[22m Poo
+l.schedule node_module
+s/vitest/dist/chunks/c
+li-api.B7PN_QUv.js:[2
+m8046:5[22m[39m
+
+[31m[1mCaused by: Er
+ror[22m: require() of
+ ES Module C:\Users\Ba
+rtlomiej\teacher-panel
+\node_modules\parse5\d
+ist\index.js from C:\U
+sers\Bartlomiej\teache
+r-panel\node_modules\j
+sdom\lib\jsdom\browser
+\parser\html.js not su
+pported.
+Instead change the req
+uire of index.js in C:
+\Users\Bartlomiej\teac
+her-panel\node_modules
+\jsdom\lib\jsdom\brows
+er\parser\html.js to a
+ dynamic import() whic
+h is available in all 
+CommonJS modules.[39m
+[90m [2mÔŁ»[22m Obj
+ect.<anonymous> node_m
+odules/jsdom/lib/jsdom
+/browser/parser/html.j
+s:[2m3:16[22m[39m
+
+[31m[2mÔÄ»ÔÄ»ÔÄ»ÔÄ»Ô
+Ä»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ
+»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»Ô
+Ä»ÔÄ»ÔÄ»ÔÄ»[22m[39m
+[31m[1mSerialized Er
+ror:[22m[39m [90m{ 
+code: 'ERR_REQUIRE_ESM
+' }[39m
+[31mÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ
+»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»
+ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»Ô
+Ä»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ»ÔÄ
+»ÔÄ»ÔÄ»[39m
+
+
+[2m Test Files [22m [2mno tests[22m
+[2m      Tests [22m [2mno tests[22m
+[2m     Errors [22m [1m[31m1 error[39m[22m
+[2m   Start at [22m 19:00:03
+[2m   Duration [22m 289ms[2m (transform 0ms, setup 0ms, import 0ms, tests 0ms, environment 0ms)[22m
+
