@@ -21,7 +21,7 @@ test('TC-003: Add New Subject', async ({ page }) => {
     await page.locator('input[placeholder="np. Nauka matematyki"]').fill('Podstawy chemii organicznej');
 
     // Dodaj przedmiot
-    await page.locator('button:has-text("Dodaj Przedmiot")').click();
+    await page.locator('button:has-text("Dodaj przedmiot")').last().click();
 
     // Sprawdź czy przedmiot się pojawił
     await expect(page.locator('.font-medium:has-text("Chemia")')).toBeVisible();
