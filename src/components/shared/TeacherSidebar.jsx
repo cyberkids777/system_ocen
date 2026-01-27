@@ -1,10 +1,15 @@
 // src/components/shared/TeacherSidebar.jsx
-export default function TeacherSidebar({ currentPage, onNavigate }) {
+import { useNavigate, useLocation } from 'react-router-dom';
+
+export default function TeacherSidebar() {
+    const navigate = useNavigate();
+    const location = useLocation();
+
     const items = [
-        { id: 'subjects', label: 'Przedmioty', icon: 'book' },
-        { id: 'addSubject', label: 'Dodaj przedmiot', icon: 'library_add' },
-        { id: 'classesGrades', label: 'Klasy i Uczniowie', icon: 'groups' },
-        { id: 'addGrades', label: 'Dodaj oceny', icon: 'add_circle' },
+        { id: 'subjects', label: 'Przedmioty', icon: 'book', path: '/teacher/subjects' },
+        { id: 'addSubject', label: 'Dodaj przedmiot', icon: 'library_add', path: '/teacher/add-subject' },
+        { id: 'classesGrades', label: 'Klasy i Uczniowie', icon: 'groups', path: '/teacher/classes' },
+        { id: 'addGrades', label: 'Dodaj oceny', icon: 'add_circle', path: '/teacher/grades' },
     ];
 
     return (
@@ -17,8 +22,8 @@ export default function TeacherSidebar({ currentPage, onNavigate }) {
                 {items.map((item) => (
                     <button
                         key={item.id}
-                        onClick={() => onNavigate(item.id)}
-                        className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${currentPage === item.id
+                        onClick={() => navigate(item.path)}
+                        className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${location.pathname === item.path
                                 ? 'bg-[#D0BB95]/10 text-[#D0BB95] dark:bg-[#D0BB95]/20'
                                 : 'text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
                             }`}
@@ -29,7 +34,7 @@ export default function TeacherSidebar({ currentPage, onNavigate }) {
                 ))}
             </nav>
             <button
-                onClick={() => onNavigate('login')}
+                onClick={() => navigate('/')}
                 className="m-4 flex items-center gap-3 rounded-lg p-2 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
             >
                 <span className="material-symbols-outlined">logout</span>

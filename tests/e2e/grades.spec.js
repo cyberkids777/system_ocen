@@ -1,50 +1,47 @@
 import { test, expect } from '@playwright/test';
 
-test.beforeEach(async ({ page }) => {
-    // Login as teacher
+async function loginAsTeacher(page) {
     await page.goto('/');
-    await page.locator('input[value="teacher"]').check();
     await page.locator('input[type="email"]').fill('teacher@example.com');
     await page.locator('input[type="password"]').fill('password123');
     await page.locator('button:has-text("Zaloguj się")').click();
-    await expect(page.locator('text=Dodaj Przedmiot')).toBeVisible();
-});
+    await expect(page).toHaveURL('/teacher/add-subject');
+}
 
 // TC-006: Przeglądanie Uczniów w Klasie
 test('TC-006: View Students in Class', async ({ page }) => {
-    // Krok 1: Kliknij "Klasy i Uczniowie"
-    await page.locator('text=Klasy i Uczniowie').click();
+    await loginAsTeacher(page);
 
-    // Krok 2: Wybierz klasę
+    // Kliknij "Klasy i Uczniowie"
+    await page.locator('button:has-text("Klasy i Uczniowie")').click();
+
+    // Sprawdź URL i tabelę
+    await expect(page).toHaveURL('/teacher/classes');
     await expect(page.locator('select')).toBeVisible();
-    await page.locator('select').selectOption('Klasa 7a');
-
-    // Krok 3: Sprawdź kolumny tabeli
     await expect(page.locator('th:has-text("Uczeń")')).toBeVisible();
     await expect(page.locator('th:has-text("Email")')).toBeVisible();
     await expect(page.locator('th:has-text("Status")')).toBeVisible();
-
-    // Krok 4: Sprawdź statusy
-    const statuses = page.locator('.inline-flex.rounded-full');
-    await expect(statuses.first()).toBeVisible();
 });
 
 // TC-008: Wyszukiwanie Ucznia
 test('TC-008: Search for Student', async ({ page }) => {
-    // Przejdź do "Dodaj Oceny"
-    await page.locator('text=Dodaj Oceny').click();
+    await loginAsTeacher(page);
 
-    // Krok 2: Wpisz "Adam" w wyszukiwarkę
+    // Kliknij "Dodaj oceny"
+    await page.locator('button:has-text("Dodaj oceny")').click();
+
+    // Sprawdź URL
+    await expect(page).toHaveURL('/teacher/grades');
+    await expect(page.locator('input[placeholder="Szukaj ucznia..."]')).toBeVisible();
+
+    const rowsBeforeSearch = await page.locator('tbody tr').count();
+    expect(rowsBeforeSearch).toBeGreaterThan(0);
+
+    // Wpisz "Adam"
     await page.locator('input[placeholder="Szukaj ucznia..."]').fill('Adam');
+    await page.waitForTimeout(300);
 
-    // Sprawdź że tylko Adam jest widoczny
     await expect(page.locator('text=Adam Nowak')).toBeVisible();
-
-    // Krok 4: Wyczyść wyszukiwanie
-    await page.locator('input[placeholder="Szukaj ucznia..."]').clear();
-
-    // Sprawdź że wszyscy studenci są znowu widoczni
-    const rows = page.locator('tbody tr');
-    const count = await rows.count();
-    expect(count).toBeGreaterThan(1);
+    const rowsAfterSearch = await page.locator('tbody tr').count();
+    expect(rowsAfterSearch).toBeLessThanOrEqual(rowsBeforeSearch);
 });

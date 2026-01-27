@@ -2,27 +2,24 @@ import { test, expect } from '@playwright/test';
 
 // TC-001: Logowanie jako Nauczyciel
 test('TC-001: Login as Teacher', async ({ page }) => {
-    // Krok 1: Otwórz aplikację
     await page.goto('/');
 
     // Sprawdź czy strona logowania się wyświetla
-    await expect(page.locator('text=Zaloguj się')).toBeVisible();
+    await expect(page.locator('h2:has-text("Zaloguj się")')).toBeVisible();
 
-    // Krok 2: Wybierz opcję "Nauczyciel"
-    await page.locator('input[value="teacher"]').check();
+    // Radio "Nauczyciel" jest domyślnie zaznaczony
     await expect(page.locator('input[value="teacher"]')).toBeChecked();
 
-    // Krok 3 i 4: Wprowadź dane logowania
+    // Wprowadź dane logowania
     await page.locator('input[type="email"]').fill('teacher@example.com');
     await page.locator('input[type="password"]').fill('password123');
 
-    // Krok 5: Kliknij "Zaloguj się"
+    // Kliknij "Zaloguj się"
     await page.locator('button:has-text("Zaloguj się")').click();
 
-    // Sprawdź przekierowanie do panelu nauczyciela
-    await expect(page).toHaveURL(/\//, { timeout: 3000 });
-    // Powinna być widoczna nawigacja nauczyciela
-    await expect(page.locator('text=Dodaj Przedmiot')).toBeVisible();
+    // Sprawdź przekierowanie do /teacher/add-subject
+    await expect(page).toHaveURL('/teacher/add-subject');
+    await expect(page.locator('text=Nazwa przedmiotu')).toBeVisible();
 });
 
 // TC-002: Logowanie jako Uczeń
@@ -40,6 +37,7 @@ test('TC-002: Login as Student', async ({ page }) => {
     // Zaloguj się
     await page.locator('button:has-text("Zaloguj się")').click();
 
-    // Sprawdź przekierowanie do panelu ucznia
+    // Sprawdź przekierowanie do /student/grades
+    await expect(page).toHaveURL('/student/grades');
     await expect(page.locator('text=Moje Oceny')).toBeVisible();
 });

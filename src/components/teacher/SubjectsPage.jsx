@@ -4,7 +4,7 @@ import Header from '../shared/Header';
 import TeacherSidebar from '../shared/TeacherSidebar';
 import { createSubjectExamples } from '../../models/Models';
 
-export default function SubjectsPage({ onNavigate }) {
+export default function SubjectsPage() {
     const [subjects] = useState(createSubjectExamples());
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -14,7 +14,7 @@ export default function SubjectsPage({ onNavigate }) {
 
     return (
         <div className="flex h-screen w-full">
-            <TeacherSidebar currentPage="subjects" onNavigate={onNavigate} />
+            <TeacherSidebar />
             <main className="flex-1 overflow-y-auto">
                 <Header title="Przedmioty" />
                 <div className="p-8">

@@ -4,7 +4,7 @@ import Header from '../shared/Header';
 import StudentSidebar from '../shared/StudentSidebar';
 import { createStudentExamples, createSubjectExamples } from '../../models/Models';
 
-export default function StudentGradesPage({ onNavigate }) {
+export default function StudentGradesPage() {
     const [students] = useState(createStudentExamples());
     const [subjects] = useState(createSubjectExamples());
     // Symulacja zalogowanego ucznia (pierwszy z listy)
@@ -40,7 +40,7 @@ export default function StudentGradesPage({ onNavigate }) {
 
     return (
         <div className="flex h-screen">
-            <StudentSidebar currentPage="studentGrades" onNavigate={onNavigate} />
+            <StudentSidebar />
             <main className="flex-1 overflow-y-auto">
                 <Header title="Moje Oceny" />
                 <div className="p-8">

@@ -1,10 +1,12 @@
 // src/components/student/StudentSubjectsPage.jsx
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../shared/Header';
 import StudentSidebar from '../shared/StudentSidebar';
 import { createStudentExamples, createSubjectExamples } from '../../models/Models';
 
-export default function StudentSubjectsPage({ onNavigate }) {
+export default function StudentSubjectsPage() {
+    const navigate = useNavigate();
     const [students] = useState(createStudentExamples());
     const [subjects] = useState(createSubjectExamples());
     // Symulacja zalogowanego ucznia
@@ -37,7 +39,7 @@ export default function StudentSubjectsPage({ onNavigate }) {
 
     return (
         <div className="flex h-screen">
-            <StudentSidebar currentPage="studentSubjects" onNavigate={onNavigate} />
+            <StudentSidebar />
             <main className="flex-1 overflow-y-auto">
                 <Header title="Moje Przedmioty" />
                 <div className="p-8">
@@ -71,15 +73,16 @@ export default function StudentSubjectsPage({ onNavigate }) {
                                             Średnia
                                         </p>
                                         <p
-                                            className={`text-3xl font-bold ${getAverageColor(
+                                            className={`text - 3xl font - bold ${getAverageColor(
                                                 data.average
-                                            )}`}
+                                            )
+                                                } `}
                                         >
                                             {data.average.toFixed(2)}
                                         </p>
                                     </div>
                                     <button
-                                        onClick={() => onNavigate('studentGrades')}
+                                        onClick={() => navigate('/student/grades')}
                                         className="mt-4 w-full rounded-lg bg-[#D0BB95]/10 px-3 py-2 text-sm font-medium text-[#D0BB95] hover:bg-[#D0BB95]/20"
                                     >
                                         Szczegóły

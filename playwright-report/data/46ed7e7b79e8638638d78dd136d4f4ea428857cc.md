@@ -31,10 +31,10 @@
       - generic [ref=e35]:
         - generic [ref=e36]:
           - generic [ref=e37]: Nazwa przedmiotu
-          - textbox "np. Matematyka" [ref=e38]
+          - textbox "np. Matematyka" [ref=e38]: Chemia
         - generic [ref=e39]:
           - generic [ref=e40]: Opis (opcjonalnie)
-          - textbox "np. Nauka matematyki" [ref=e41]
+          - textbox "np. Nauka matematyki" [active] [ref=e41]: Podstawy chemii organicznej
         - button "Dodaj Przedmiot" [ref=e42] [cursor=pointer]
       - generic [ref=e43]:
         - heading "Lista przedmiotów" [level=3] [ref=e44]

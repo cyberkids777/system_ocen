@@ -4,14 +4,14 @@ import Header from '../shared/Header';
 import TeacherSidebar from '../shared/TeacherSidebar';
 import { createStudentExamples } from '../../models/Models';
 
-export default function ClassesGradesPage({ onNavigate }) {
+export default function ClassesGradesPage() {
     const [selectedClass, setSelectedClass] = useState('Klasa 7a');
 
     const [students] = useState(createStudentExamples());
 
     return (
         <div className="flex h-screen">
-            <TeacherSidebar currentPage="classesGrades" onNavigate={onNavigate} />
+            <TeacherSidebar />
             <main className="flex-1 overflow-y-auto">
                 <Header title="Klasy i Uczniowie" />
                 <div className="p-8">

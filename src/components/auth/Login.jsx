@@ -1,11 +1,13 @@
 // src/components/auth/Login.jsx
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function Login({ onNavigate }) {
+export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userType, setUserType] = useState('teacher');
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = () => {
         if (!email || !password) {
@@ -13,9 +15,9 @@ export default function Login({ onNavigate }) {
             return;
         }
         if (userType === 'teacher') {
-            onNavigate('addSubject');
+            navigate('/teacher/add-subject');
         } else {
-            onNavigate('studentGrades');
+            navigate('/student/grades');
         }
     };
 

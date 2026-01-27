@@ -7,11 +7,11 @@
       - generic [ref=e7]: school
       - heading "Panel Ucznia" [level=2] [ref=e8]
     - navigation [ref=e9]:
-      - button "grade Moje Oceny" [ref=e10] [cursor=pointer]:
-        - generic [ref=e11]: grade
+      - button "star Moje Oceny" [ref=e10] [cursor=pointer]:
+        - generic [ref=e11]: star
         - generic [ref=e12]: Moje Oceny
-      - button "book Moje Przedmioty" [ref=e13] [cursor=pointer]:
-        - generic [ref=e14]: book
+      - button "menu_book Moje Przedmioty" [ref=e13] [cursor=pointer]:
+        - generic [ref=e14]: menu_book
         - generic [ref=e15]: Moje Przedmioty
     - button "logout Wyloguj" [ref=e16] [cursor=pointer]:
       - generic [ref=e17]: logout

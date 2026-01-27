@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/auth/Login';
 import AddSubjectPage from './components/teacher/AddSubjectPage';
 import SubjectsPage from './components/teacher/SubjectsPage';
@@ -8,17 +8,27 @@ import StudentGradesPage from './components/student/StudentGradesPage';
 import StudentSubjectsPage from './components/student/StudentSubjectsPage';
 
 export default function App() {
-  const [page, setPage] = useState('login');
-
   return (
-    <div style={{ fontFamily: "'Lexend', sans-serif" }}>
-      {page === 'login' && <Login onNavigate={setPage} />}
-      {page === 'addSubject' && <AddSubjectPage onNavigate={setPage} />}
-      {page === 'subjects' && <SubjectsPage onNavigate={setPage} />}
-      {page === 'classesGrades' && <ClassesGradesPage onNavigate={setPage} />}
-      {page === 'addGrades' && <AddGradesPage onNavigate={setPage} />}
-      {page === 'studentGrades' && <StudentGradesPage onNavigate={setPage} />}
-      {page === 'studentSubjects' && <StudentSubjectsPage onNavigate={setPage} />}
-    </div>
+    <BrowserRouter>
+      <div style={{ fontFamily: "'Lexend', sans-serif" }}>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+
+          {/* Teacher routes */}
+          <Route path="/teacher/add-subject" element={<AddSubjectPage />} />
+          <Route path="/teacher/subjects" element={<SubjectsPage />} />
+          <Route path="/teacher/classes" element={<ClassesGradesPage />} />
+          <Route path="/teacher/grades" element={<AddGradesPage />} />
+
+          {/* Student routes */}
+          <Route path="/student/grades" element={<StudentGradesPage />} />
+          <Route path="/student/subjects" element={<StudentSubjectsPage />} />
+
+          {/* Redirect any unknown route to login */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }

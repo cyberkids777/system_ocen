@@ -4,7 +4,7 @@ import Header from '../shared/Header';
 import TeacherSidebar from '../shared/TeacherSidebar';
 import { createStudentExamples } from '../../models/Models';
 
-export default function AddGradesPage({ onNavigate }) {
+export default function AddGradesPage() {
     const [selectedClass, setSelectedClass] = useState('Klasa 7a');
     const [selectedSubject, setSelectedSubject] = useState('Matematyka');
     const [searchTerm, setSearchTerm] = useState('');
@@ -36,7 +36,7 @@ export default function AddGradesPage({ onNavigate }) {
 
     return (
         <div className="flex h-screen">
-            <TeacherSidebar currentPage="addGrades" onNavigate={onNavigate} />
+            <TeacherSidebar />
             <main className="flex-1 overflow-y-auto">
                 <Header title="Dodaj Oceny" />
                 <div className="p-8">

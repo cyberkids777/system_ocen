@@ -4,7 +4,7 @@ import Header from '../shared/Header';
 import TeacherSidebar from '../shared/TeacherSidebar';
 import { Subject, createSubjectExamples } from '../../models/Models';
 
-export default function AddSubjectPage({ onNavigate }) {
+export default function AddSubjectPage() {
     const [subjects, setSubjects] = useState(createSubjectExamples());
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -30,7 +30,7 @@ export default function AddSubjectPage({ onNavigate }) {
 
     return (
         <div className="flex h-screen w-full">
-            <TeacherSidebar currentPage="addSubject" onNavigate={onNavigate} />
+            <TeacherSidebar />
             <main className="flex-1 overflow-y-auto flex flex-col">
                 <Header title="Dodaj Przedmiot" />
                 <div className="p-8 flex-1">
