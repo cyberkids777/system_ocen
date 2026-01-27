@@ -1,29 +1,15 @@
-# Logs
-logs
+# Ignoruj pliki które nie powinny być w repo
+node_modules/
+dist/
+.env
+.env.local
+.env.production
 *.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# Playwright
-playwright-report/
-test-results/
-test-output.txt
+coverage/
+.vscode/
+.idea/
+*.swp
+*.swo
+.cache/
