@@ -73,12 +73,12 @@ nano .env
 
 #### Edytuj `.env` (jeśli użyłeś innych danych w kroku 2):
 ```env
-DB_HOST=localhost
-DB_USER=teacher_user
-DB_PASSWORD=password123
-DB_NAME=teacher_panel
+DB_HOST=mysql.mikr.us
+DB_USER=felix114
+DB_PASSWORD=1D89_064571
+DB_NAME=db_felix114
 DB_PORT=3306
-JWT_SECRET=my-super-secret-jwt-key-change-in-production
+JWT_SECRET=super_secret_jwt_key_teacher_panel_2026
 PORT=3000
 NODE_ENV=development
 ```
@@ -94,13 +94,6 @@ node scripts/syncDb.js
 ```
 
 Powinieneś zobaczyć: `✅ Database synchronized successfully.`
-
-#### Wypełnij bazę danymi testowymi:
-```bash
-node scripts/seedDb.js
-```
-
-Powinieneś zobaczyć: `✅ Database seeded successfully.`
 
 ### 4. Konfiguracja Frontend
 
@@ -124,7 +117,7 @@ npm install
 **Terminal 1 - Backend:**
 ```bash
 cd server
-npm run dev
+node server.js
 ```
 Powinno wyświetlić:
 ```
@@ -142,29 +135,6 @@ Powinno wyświetlić:
 
   ➜  Local:   http://localhost:5173/
 ```
-
-### Metoda 2: Jeden terminal (opcjonalna)
-
-Możesz użyć narzędzia jak `concurrently` (już zainstalowane w dev dependencies):
-```bash
-npm run dev:all
-```
-
----
-
-## 🔐 Dane Testowe
-
-Po seedowaniu bazy danych możesz się zalogować:
-
-### Nauczyciel:
-- **Email:** `teacher@example.com`
-- **Hasło:** `password123`
-- **Typ:** Teacher
-
-### Uczeń:
-- **Email:** `student@example.com`
-- **Hasło:** `password123`
-- **Typ:** Student
 
 ---
 
@@ -238,39 +208,6 @@ node scripts/seedDb.js    # Wypełnij danymi testowymi
 
 ---
 
-## 🔧 Troubleshooting
-
-### Problem: `Error: connect ECONNREFUSED`
-**Rozwiązanie:** Backend nie działa. Upewnij się, że uruchomiłeś:
-```bash
-cd server
-npm run dev
-```
-
-### Problem: `ER_ACCESS_DENIED_ERROR`
-**Rozwiązanie:** Błędne dane do MySQL w `.env`. Sprawdź:
-- `DB_USER`
-- `DB_PASSWORD`
-- Czy użytkownik ma uprawnienia do bazy
-
-### Problem: `Unknown database 'teacher_panel'`
-**Rozwiązanie:** Nie utworzyłeś bazy. Wykonaj krok 2 (Konfiguracja Bazy).
-
-### Problem: `Port 3000 is already in use`
-**Rozwiązanie:** Zmień port w `server/.env`:
-```env
-PORT=3001
-```
-I zaktualizuj frontend API URL w `src/api/client.js`.
-
-### Problem: Frontend nie łączy się z Backend
-**Rozwiązanie:** Sprawdź czy w `src/api/client.js` jest:
-```javascript
-const API_BASE_URL = 'http://localhost:3000/api';
-```
-
----
-
 ## 🌐 API Endpoints
 
 ### Authentication
@@ -337,43 +274,8 @@ PORT=3000
 NODE_ENV=development
 ```
 
-### Hot Reload
-
-- **Frontend**: Vite automatycznie odświeża przy zmianach w `src/`
-- **Backend**: Nodemon automatycznie restartuje przy zmianach w `server/src/`
-
----
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create feature branch: `git checkout -b feature/amazing-feature`
-3. Commit changes: `git commit -m 'Add amazing feature'`
-4. Push to branch: `git push origin feature/amazing-feature`
-5. Open Pull Request
-
----
-
 ## 📄 License
 
 MIT License - see LICENSE file for details
 
 ---
-
-## 👨‍💻 Autor
-
-Projekt zrealizowany jako panel nauczyciela do zarządzania ocenami.
-
----
-
-## ❓ Pomoc
-
-Jeśli masz problemy:
-1. Sprawdź sekcję **Troubleshooting** powyżej
-2. Upewnij się że wszystkie wymagania są spełnione
-3. Sprawdź logi w konsoli (backend i frontend)
-4. Otwórz issue na GitHub
-
----
-
-**Powodzenia! 🚀**
