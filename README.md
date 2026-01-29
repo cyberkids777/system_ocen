@@ -73,14 +73,26 @@ nano .env
 
 #### Edytuj `.env` (jeśli użyłeś innych danych w kroku 2):
 ```env
-DB_HOST=mysql.mikr.us
-DB_USER=felix114
-DB_PASSWORD=1D89_064571
-DB_NAME=db_felix114
+# PRZYKŁADOWY PLIK .env
+# Skopiuj ten plik jako .env i dostosuj wartości
+
+# Database Configuration
+DB_HOST=localhost
+DB_USER=teacher_user
+DB_PASSWORD=password123
+DB_NAME=teacher_panel
 DB_PORT=3306
-JWT_SECRET=super_secret_jwt_key_teacher_panel_2026
+
+# JWT Secret - ZMIEŃ W PRODUKCJI na losowy ciąg znaków
+JWT_SECRET=my-super-secret-jwt-key-change-in-production
+
+# Server Configuration
 PORT=3000
 NODE_ENV=development
+
+# CORS Origin (dla produkcji ustaw domenę)
+CORS_ORIGIN=*
+
 ```
 
 #### Zainstaluj zależności:
