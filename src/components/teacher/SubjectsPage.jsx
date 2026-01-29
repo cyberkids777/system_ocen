@@ -78,6 +78,7 @@ export default function SubjectsPage() {
                                 {filteredSubjects.map((subject) => (
                                     <div
                                         key={subject.id}
+                                        data-testid="subject-card"
                                         className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800/50 hover:shadow-md transition-shadow relative group"
                                     >
                                         <div className="flex items-start justify-between">

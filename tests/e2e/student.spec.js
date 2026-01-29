@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 async function loginAsStudent(page) {
     await page.goto('/');
     await page.locator('input[value="student"]').check();
-    await page.locator('input[type="email"]').fill('student@example.com');
+    await page.locator('input[type="email"]').fill('maria.kowalczyk@student.pl');
     await page.locator('input[type="password"]').fill('password123');
     await page.locator('button:has-text("Zaloguj się")').click();
     await expect(page).toHaveURL('/student/grades');

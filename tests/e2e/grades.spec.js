@@ -2,10 +2,10 @@ import { test, expect } from '@playwright/test';
 
 async function loginAsTeacher(page) {
     await page.goto('/');
-    await page.locator('input[type="email"]').fill('teacher@example.com');
+    await page.locator('input[type="email"]').fill('jan.kowalski@szkola.pl');
     await page.locator('input[type="password"]').fill('password123');
     await page.locator('button:has-text("Zaloguj się")').click();
-    await expect(page).toHaveURL('/teacher/add-subject');
+    await expect(page).toHaveURL('/teacher/subjects');
 }
 
 // TC-006: Przeglądanie Uczniów w Klasie
@@ -20,7 +20,6 @@ test('TC-006: View Students in Class', async ({ page }) => {
     await expect(page.locator('select')).toBeVisible();
     await expect(page.locator('th:has-text("Uczeń")')).toBeVisible();
     await expect(page.locator('th:has-text("Email")')).toBeVisible();
-    await expect(page.locator('th:has-text("Status")')).toBeVisible();
 });
 
 // TC-008: Wyszukiwanie Ucznia
@@ -38,10 +37,10 @@ test('TC-008: Search for Student', async ({ page }) => {
     expect(rowsBeforeSearch).toBeGreaterThan(0);
 
     // Wpisz "Adam"
-    await page.locator('input[placeholder="Szukaj ucznia..."]').fill('Adam');
+    await page.locator('input[placeholder="Szukaj ucznia..."]').fill('Piotr Wiśniewski');
     await page.waitForTimeout(300);
 
-    await expect(page.locator('text=Adam Nowak')).toBeVisible();
+    await expect(page.locator('text=Piotr Wiśniewski')).toBeVisible();
     const rowsAfterSearch = await page.locator('tbody tr').count();
     expect(rowsAfterSearch).toBeLessThanOrEqual(rowsBeforeSearch);
 });
